@@ -271,7 +271,7 @@ class WechatChannel(ChatChannel):
                     # 计算消息的长度，然后根据长度设置停顿时间
                     # 面向结果编程,让他更加像人
                     if msg != "这个问题我还没有学会，请问我其它问题吧":
-                        delay_time = len(msg) / 7  # 假设每5个字符停顿1秒，可以根据需要调整这个比例
+                        delay_time = len(msg) / 2  # 假设每5个字符停顿1秒，可以根据需要调整这个比例
                         itchat.send(msg, toUserName=receiver)
                         time.sleep(delay_time)  # 停顿相应的时间
                         logger.info("[WX] sendMsg={}, receiver={}".format(msg, receiver))
@@ -280,7 +280,7 @@ class WechatChannel(ChatChannel):
                         logger.info("[WX] sendMsg={}, receiver={}".format(msg, receiver))
                     # itchat.send(msg, toUserName=receiver)
                     # logger.info("[WX] sendMsg={}, receiver={}".format(msg, receiver))
-                    # time.sleep(0.5) #每次发消息停顿0.5秒
+                    # time.sleep(10) #每次发消息停顿0.5秒
 
                 if mood and i == 1 and sticker_sent == 0:  # 有情感，判定为发送，且未发送过
                     image_directory = os.path.join('resources', 'stickers', mood)
